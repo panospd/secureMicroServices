@@ -1,5 +1,4 @@
-﻿using IdentityModel.Client;
-using Movies.Client.Models;
+﻿using Movies.Client.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -31,41 +30,6 @@ namespace Movies.Client.ApiServices
             var content = await response.Content.ReadAsStringAsync();
 
             return JsonConvert.DeserializeObject<List<Movie>>(content);
-
-            //var apiClientCredentials = new ClientCredentialsTokenRequest
-            //{
-            //    Address = "https://localhost:5005/connect/token",
-            //    ClientId = "movieClient",
-            //    ClientSecret = "secret",
-            //    Scope = "movieAPI"
-            //};
-
-            //using var client = new HttpClient();
-
-            //var disco = await client.GetDiscoveryDocumentAsync("https://localhost:5005");
-
-            //if(disco.IsError)
-            //{
-            //    return null;
-            //}
-
-            //var tokenResponse = await client.RequestClientCredentialsTokenAsync(apiClientCredentials);
-
-            //if(tokenResponse.IsError)
-            //{
-            //    return null;
-            //}
-
-            //using var apiClient = new HttpClient();
-
-            //apiClient.SetBearerToken(tokenResponse.AccessToken);
-
-            //var response = await apiClient.GetAsync("https://localhost:5001/api/movies");
-            //response.EnsureSuccessStatusCode();
-
-            //var content = await response.Content.ReadAsStringAsync();
-
-            //return JsonConvert.DeserializeObject<List<Movie>>(content);
         }
 
         public Task<Movie> GetMovie()
