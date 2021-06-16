@@ -11,15 +11,6 @@ namespace Movies.Client.HttpHandlers
 {
     public class AuthenticationDelegatingHandler : DelegatingHandler
     {
-        //private readonly IHttpClientFactory _httpClientFactory;
-        //private readonly ClientCredentialsTokenRequest _tokenRequest;
-
-        //public AuthenticationDelegatingHandler(IHttpClientFactory httpClientFactory, ClientCredentialsTokenRequest tokenRequest)
-        //{
-        //    _httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
-        //    _tokenRequest = tokenRequest ?? throw new ArgumentNullException(nameof(tokenRequest));
-        //}
-
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         public AuthenticationDelegatingHandler(IHttpContextAccessor httpContextAccessor)
