@@ -15,17 +15,21 @@ namespace Movies.Api.Controllers
     public class MoviesController : ControllerBase
     {
         private readonly MoviesApiContext _context;
+        private readonly UserDetails _userDetails;
 
-        public MoviesController(MoviesApiContext context)
+        public MoviesController(MoviesApiContext context, UserDetails userDetails)
         {
             _context = context;
+            _userDetails = userDetails;
         }
 
         // GET: api/Movies
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Movie>>> GetMovie()
+        public async Task<ActionResult<IEnumerable<Movie>>> GetMovies()
         {
-            return await _context.Movie.ToListAsync();
+            return await _context.Movie
+                .Where(m => m.Owner == _userDetails.GivenName)
+                .ToListAsync();
         }
 
         // GET: api/Movies/5

@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Movies.Api.Data;
 using Microsoft.IdentityModel.Tokens;
+using Movies.Api.Model;
+using Microsoft.AspNetCore.Http;
 
 namespace Movies.Api
 {
@@ -29,6 +31,8 @@ namespace Movies.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<UserDetails>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
